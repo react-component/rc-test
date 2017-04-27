@@ -1,0 +1,71 @@
+{
+  "name": "rc-test",
+  "version": "6.0.0",
+  "description": "test tools for react component",
+  "keywords": [
+    "react",
+    "test"
+  ],
+  "homepage": "http://github.com/react-component/rc-test",
+  "author": {
+    "name": "yiminghe@gmail.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:react-component/rc-test.git"
+  },
+  "bugs": {
+    "url": "http://github.com/react-component/rc-test/issues"
+  },
+  "licenses": "MIT",
+  "bin": {
+    "rc-test": "./bin/rc-test.js",
+    "rc-test-run": "./bin/rc-test-run.js"
+  },
+  "scripts": {
+    "pub": "git push origin && npm publish",
+    "precommit": "npm run checkDep && npm run lint",
+    "checkDep": "node scripts/checkDep",
+    "lint": "eslint --ext .js,.jsx lib"
+  },
+  "dependencies": {
+    "colorful": "2.x",
+    "commander": "2.8.x",
+    "console-polyfill": "^0.2.3",
+    "es5-shim": "^4.5.9",
+    "es6-promise": "^4.1.0",
+    "fs-extra": "^0.16.5",
+    "glob": "~5.0.15",
+    "gulp": "^3.8.10",
+    "html5shiv": "^3.7.3",
+    "istanbul-instrumenter-loader": "^0.2.0",
+    "karma": "~1.1.2",
+    "karma-chrome-launcher": "~1.0.1",
+    "karma-coverage": "~1.1.1",
+    "karma-coveralls": "~1.1.2",
+    "karma-firefox-launcher": "~1.0.0",
+    "karma-ie-launcher": "~1.0.0",
+    "karma-mocha": "~1.1.1",
+    "karma-mocha-reporter": "~2.1.0",
+    "karma-phantomjs-launcher": "~1.0.1",
+    "karma-safari-launcher": "~1.0.0",
+    "karma-sauce-launcher": "~1.0.0",
+    "karma-sourcemap-loader": "~0.3.7",
+    "karma-webpack": "~1.7.0",
+    "match-require": "2.x",
+    "minimist": "1.x",
+    "mocha": "2.x",
+    "object-assign": "4.x",
+    "phantomjs-prebuilt": "^2.1.4",
+    "shelljs": "0.3.x"
+  },
+  "devDependencies": {
+    "eslint": "^1.10.3",
+    "eslint-config-airbnb": "^5.0.1",
+    "eslint-plugin-react": "^3.16.1",
+    "pre-commit": "1.x"
+  },
+  "pre-commit": [
+    "precommit"
+  ]
+}
