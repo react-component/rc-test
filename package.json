@@ -31,7 +31,7 @@
   "dependencies": {
     "colorful": "2.x",
     "commander": "2.8.x",
-    "console-polyfill": "^0.2.3",
+    "console-polyfill": "^0.3.0",
     "es5-shim": "^4.5.9",
     "es6-promise": "^4.1.0",
     "fs-extra": "^0.16.5",
