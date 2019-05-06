@@ -36,7 +36,7 @@
     "es6-promise": "^4.1.0",
     "fs-extra": "^0.16.5",
     "glob": "~5.0.15",
-    "gulp": "^3.8.10",
+    "gulp": "^4.0.2",
     "html5shiv": "^3.7.3",
     "istanbul-instrumenter-loader": "2.x",
     "karma": "~1.1.2",
