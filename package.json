@@ -55,7 +55,7 @@
     "karma-webpack": "2.x",
     "match-require": "2.x",
     "minimist": "1.x",
-    "mocha": "2.x",
+    "mocha": "9.x",
     "object-assign": "4.x",
     "phantomjs-prebuilt": "^2.1.4",
     "shelljs": "0.3.x"
