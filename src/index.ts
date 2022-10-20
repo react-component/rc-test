@@ -7,8 +7,8 @@ export default function (originOpts: any = {}) {
   const config = {
     rootDir: process.cwd(),
     testEnvironment: 'jsdom',
-    setupFiles: [require.resolve('./shim.js')],
-    setupFilesAfterEnv: [require.resolve('./shim.js')],
+    setupFiles: [require.resolve('./setup.js')],
+    setupFilesAfterEnv: [require.resolve('./setupAfterEnv.js')],
     transform: {
       '\\.(t|j)sx?$': require.resolve('./transformers/jsTransformer'),
       '\\.svg$': require.resolve('./transformers/fileTransformer'),

@@ -12,4 +12,9 @@ describe('basic', () => {
     await Promise.resolve();
     expect(1).toBeTruthy();
   });
+
+  it('testing lib jsdom', () => {
+    const { container } = render(<p data-test="bamboo" />);
+    expect(container.querySelector('p')).toHaveAttribute('data-test', 'bamboo');
+  });
 });
