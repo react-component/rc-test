@@ -1,4 +1,4 @@
-import jest from 'jest';
+import { runCLI } from 'jest';
 
 export default function (originOpts: any = {}) {
   const opts = { ...originOpts };
@@ -6,6 +6,7 @@ export default function (originOpts: any = {}) {
 
   const config = {
     rootDir: process.cwd(),
+    testEnvironment: 'jsdom',
     setupFiles: [require.resolve('./shim.js')],
     setupFilesAfterEnv: [require.resolve('./shim.js')],
     transform: {
@@ -32,7 +33,7 @@ export default function (originOpts: any = {}) {
     // 用于设置 jest worker 启动的个数
   };
 
-  return jest.runCLI(
+  return runCLI(
     {
       config: JSON.stringify(config),
       ...opts,
