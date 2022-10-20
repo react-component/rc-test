@@ -1,8 +1,22 @@
 import { runCLI } from 'jest';
 
+const ALIAS = {
+  t: 'testNamePattern',
+  w: 'maxWorkers',
+  u: 'updateSnapshot',
+};
+
 export default function (originOpts: any = {}) {
   const opts = { ...originOpts };
   const cwd = process.cwd();
+
+  // Fill jest alias
+  Object.keys(ALIAS).forEach((key) => {
+    if (opts[key]) {
+      opts[ALIAS[key]] = opts[key];
+      delete opts[key];
+    }
+  });
 
   const config = {
     rootDir: process.cwd(),
