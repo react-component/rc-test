@@ -1,4 +1,6 @@
 import { runCLI } from 'jest';
+import path from 'path';
+import fs from 'fs-extra';
 
 const ALIAS = {
   t: 'testNamePattern',
@@ -6,18 +8,7 @@ const ALIAS = {
   u: 'updateSnapshot',
 };
 
-export default function (originOpts: any = {}) {
-  const opts = { ...originOpts };
-  const cwd = process.cwd();
-
-  // Fill jest alias
-  Object.keys(ALIAS).forEach((key) => {
-    if (opts[key]) {
-      opts[ALIAS[key]] = opts[key];
-      delete opts[key];
-    }
-  });
-
+export function getConfig() {
   const config = {
     rootDir: process.cwd(),
     testEnvironment: 'jsdom',
@@ -46,6 +37,35 @@ export default function (originOpts: any = {}) {
     testPathIgnorePatterns: ['/node_modules/'],
     // 用于设置 jest worker 启动的个数
   };
+
+  return config;
+}
+
+export default function (originOpts: any = {}) {
+  const opts = { ...originOpts };
+  const cwd = process.cwd();
+
+  let config = getConfig();
+
+  // Merge `jest.config.js`
+  const userJestConfigFile = path.resolve(cwd, 'jest.config.js');
+  if (fs.existsSync(userJestConfigFile)) {
+    const { setupFiles = [], setupFilesAfterEnv = [], ...restConfig } = require(userJestConfigFile);
+    config = {
+      ...config,
+      ...restConfig,
+      setupFiles: [...config.setupFiles, ...setupFiles],
+      setupFilesAfterEnv: [...config.setupFilesAfterEnv, ...setupFilesAfterEnv],
+    };
+  }
+
+  // Fill jest alias
+  Object.keys(ALIAS).forEach((key) => {
+    if (opts[key]) {
+      opts[ALIAS[key]] = opts[key];
+      delete opts[key];
+    }
+  });
 
   return runCLI(
     {
