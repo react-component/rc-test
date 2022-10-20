@@ -26,3 +26,5 @@ spm_modules
 dist
 tests/*.css
 yarn.lock
+lib/
+es/
