@@ -31,7 +31,8 @@
   "scripts": {
     "compile": "father build",
     "prepublishOnly": "npm run compile && np --no-cleanup --yolo --no-publish",
-    "test": "node ./bin/rc-test.js"
+    "test:only": "node ./bin/rc-test.js",
+    "test": "npm run compile && npm run test:only"
   },
   "dependencies": {
     "@babel/preset-typescript": "^7.18.6",
