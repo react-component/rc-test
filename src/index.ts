@@ -67,11 +67,25 @@ export default function (originOpts: any = {}) {
     }
   });
 
-  return runCLI(
-    {
-      config: JSON.stringify(config),
-      ...opts,
-    },
-    [cwd],
-  );
+  return new Promise((resolve, reject) => {
+    runCLI(
+      {
+        config: JSON.stringify(config),
+        ...opts,
+      },
+      [cwd],
+    )
+      .then((result) => {
+        const results = result.results;
+
+        if (results.success) {
+          resolve(results);
+        } else {
+          reject(new Error('Jest failed'));
+        }
+      })
+      .catch((e) => {
+        console.log(e);
+      });
+  });
 }
