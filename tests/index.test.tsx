@@ -17,4 +17,8 @@ describe('basic', () => {
     const { container } = render(<p data-test="bamboo" />);
     expect(container.querySelector('p')).toHaveAttribute('data-test', 'bamboo');
   });
+
+  it('correct env', () => {
+    expect(process.env.NODE_ENV).toEqual('test');
+  });
 });

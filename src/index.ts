@@ -68,6 +68,9 @@ export default function (originOpts: any = {}) {
   });
 
   return new Promise((resolve, reject) => {
+    const originEnv = process.env.NODE_ENV;
+    process.env.NODE_ENV = 'test';
+
     runCLI(
       {
         config: JSON.stringify(config),
@@ -86,6 +89,9 @@ export default function (originOpts: any = {}) {
       })
       .catch((e) => {
         console.log(e);
+      })
+      .then(() => {
+        process.env.NODE_ENV = originEnv;
       });
   });
 }
