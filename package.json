@@ -19,7 +19,8 @@
   },
   "license": "MIT",
   "bin": {
-    "rc-test": "./bin/rc-test.js"
+    "rc-test": "./bin/rc-test.js",
+    "rc-test-migrate": "./bin/rc-test-migrate.js"
   },
   "main": "./lib/index",
   "module": "./es/index",
