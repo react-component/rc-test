@@ -9,10 +9,19 @@ const ALIAS = {
 };
 
 export function getConfig() {
+  const cwd = process.cwd();
+  const pkg = require(path.resolve(cwd, 'package.json'));
+
+  const setupFiles = [require.resolve('./setup.js')];
+
+  if (pkg.devDependencies['enzyme'] && !pkg.devDependencies['enzyme-adapter-react-16']) {
+    setupFiles.push(require.resolve('./setupEnzyme.js'));
+  }
+
   const config = {
-    rootDir: process.cwd(),
+    rootDir: cwd,
     testEnvironment: 'jsdom',
-    setupFiles: [require.resolve('./setup.js')],
+    setupFiles,
     setupFilesAfterEnv: [require.resolve('./setupAfterEnv.js')],
     transform: {
       '\\.(t|j)sx?$': require.resolve('./transformers/jsTransformer'),
