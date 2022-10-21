@@ -36,6 +36,9 @@ export default defineConfig({
 `.trim(),
       "utf-8"
     );
+
+    // Clean up father v2 hooks
+    fs.removeSync(path.resolve(process.cwd(), ".git/hooks/pre-commit"));
   }
 }
 
@@ -60,4 +63,7 @@ console.log("更新完成，请检查以下内容：");
 console.log(" - 更新 .github/workflows 中 CI node 版本至 16");
 console.log(
   " - 移除 jest.config.js 中关于 @testing-library/jsdom 的 setupFilesAfterEnv 配置"
+);
+console.log(
+  " - 重新安装依赖 node_modules"
 );
