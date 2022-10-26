@@ -1,4 +1,3 @@
-import chalk from 'chalk';
 import fs from 'fs-extra';
 import { runCLI } from 'jest';
 import path from 'path';
@@ -21,9 +20,7 @@ export function getConfig() {
       !pkg.devDependencies['enzyme-adapter-react-16']
     ) {
       console.log(
-        chalk.red(
-          '[rc-test] Legacy "enzyme-adapter-react-16" is not in the deps. Please install in dev deps!',
-        ),
+        '[rc-test] Legacy "enzyme-adapter-react-16" is not in the deps. Please install in dev deps!',
       );
     }
     setupFiles.push(require.resolve('./setupEnzyme.js'));
