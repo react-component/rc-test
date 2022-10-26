@@ -1,6 +1,7 @@
+import chalk from 'chalk';
+import fs from 'fs-extra';
 import { runCLI } from 'jest';
 import path from 'path';
-import fs from 'fs-extra';
 
 const ALIAS = {
   t: 'testNamePattern',
@@ -15,6 +16,16 @@ export function getConfig() {
   const setupFiles = [require.resolve('./setup.js')];
 
   if (pkg.devDependencies['enzyme']) {
+    if (
+      !pkg.dependencies['enzyme-adapter-react-16'] &&
+      !pkg.devDependencies['enzyme-adapter-react-16']
+    ) {
+      console.log(
+        chalk.red(
+          '[rc-test] Legacy "enzyme-adapter-react-16" is not in the deps. Please install in dev deps!',
+        ),
+      );
+    }
     setupFiles.push(require.resolve('./setupEnzyme.js'));
   }
 
