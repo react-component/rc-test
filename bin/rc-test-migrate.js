@@ -5,6 +5,7 @@ const semver = require("semver");
 const fs = require("fs-extra");
 
 const VER_FATHER = "father";
+const VER_PLUGIN = "@rc-component/father-plugin";
 const RM_DEPS = ["jest", "father-build", "react-test-renderer"];
 
 const cwd = process.cwd();
@@ -20,6 +21,7 @@ if (fatherVer) {
   if (fatherMajor < 4) {
     console.log("Upgrading father version to ^4.0.0 ...");
     pkg.devDependencies[VER_FATHER] = "^4.0.0";
+    pkg.devDependencies[VER_PLUGIN] = "^1.0.0";
 
     console.log("Override .fatherrc...");
     fs.writeFileSync(
