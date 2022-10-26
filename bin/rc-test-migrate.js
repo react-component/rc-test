@@ -6,6 +6,7 @@ const fs = require("fs-extra");
 
 const VER_FATHER = "father";
 const VER_PLUGIN = "@rc-component/father-plugin";
+const VER_ENZYME_ADAPTER = "enzyme-adapter-react-16";
 const RM_DEPS = ["jest", "father-build", "react-test-renderer"];
 
 const cwd = process.cwd();
@@ -39,6 +40,12 @@ export default defineConfig({
     // Clean up father v2 hooks
     fs.removeSync(path.resolve(cwd, ".git/hooks/pre-commit"));
   }
+}
+
+// Check if exist enzyme
+const existEnzyme = pkg.devDependencies["enzyme"];
+if (existEnzyme) {
+  pkg.devDependencies[VER_ENZYME_ADAPTER] = "^1.15.6";
 }
 
 // ==================================================================

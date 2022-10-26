@@ -14,7 +14,7 @@ export function getConfig() {
 
   const setupFiles = [require.resolve('./setup.js')];
 
-  if (pkg.devDependencies['enzyme'] && !pkg.devDependencies['enzyme-adapter-react-16']) {
+  if (pkg.devDependencies['enzyme']) {
     setupFiles.push(require.resolve('./setupEnzyme.js'));
   }
 
