@@ -20,11 +20,11 @@ if (fatherVer) {
   const fatherMajor = semver.major(semver.minVersion(fatherVer));
 
   if (fatherMajor < 4) {
-    console.log("Upgrading father version to ^4.0.0 ...");
+    console.log("升级 father 至 v4...");
     pkg.devDependencies[VER_FATHER] = "^4.0.0";
     pkg.devDependencies[VER_PLUGIN] = "^1.0.0";
 
-    console.log("Override .fatherrc...");
+    console.log("覆盖 .fatherrc...");
     fs.writeFileSync(
       path.resolve(cwd, ".fatherrc.js"),
       `
@@ -38,6 +38,7 @@ export default defineConfig({
     );
 
     // Clean up father v2 hooks
+    console.log("清理遗留 pre-commit...");
     fs.removeSync(path.resolve(cwd, ".git/hooks/pre-commit"));
   }
 }
@@ -45,7 +46,20 @@ export default defineConfig({
 // Check if exist enzyme
 const existEnzyme = pkg.devDependencies["enzyme"];
 if (existEnzyme) {
+  console.log("添加 enzyme adapter 依赖...");
   pkg.devDependencies[VER_ENZYME_ADAPTER] = "^1.15.6";
+}
+
+// ==================================================================
+// tsconfig.json
+const tsConfigPath = path.resolve(cwd, "tsconfig.json");
+if (fs.existsSync(tsConfigPath)) {
+  console.log("更新 tsconfig jsx 配置为 'react'...");
+  const tsConfig = require(path.resolve(cwd, "tsconfig.json"));
+
+  tsConfig.compilerOptions.jsx = "react";
+
+  fs.writeFileSync(tsConfigPath, JSON.stringify(tsConfig, null, 2));
 }
 
 // ==================================================================
@@ -65,6 +79,7 @@ fs.writeFileSync(
 
 // ==================================================================
 // Print Tips
+console.log("");
 console.log("更新完成，请检查以下内容：");
 console.log(" - 更新 .github/workflows 中 CI node 版本至 16");
 console.log(
