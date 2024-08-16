@@ -1,10 +1,9 @@
-name: ✅ react component test
+name: react component test
 
 on: [workflow_call]
 
 jobs:
   test:
-    name: ✅ react component test
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
