@@ -31,7 +31,7 @@
   ],
   "scripts": {
     "compile": "father build",
-    "prepublishOnly": "npm run compile && np --no-cleanup --yolo --no-publish",
+    "prepublishOnly": "npm run compile && np --no-cleanup --yolo --no-publish --branch=main",
     "test": "npm run compile && npm run test:only",
     "test:only": "node ./bin/rc-test.js"
   },
