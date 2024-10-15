@@ -54,7 +54,7 @@
     "yargs-parser": "^21.1.1"
   },
   "devDependencies": {
-    "@types/fs-extra": "^9.0.13",
+    "@types/fs-extra": "^11.0.4",
     "@types/jest": "^29.2.0",
     "@types/node": "^22.7.5",
     "@types/react": "^18.0.0",
