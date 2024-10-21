@@ -60,7 +60,7 @@
     "@types/react": "^18.0.0",
     "@types/react-dom": "^18.0.0",
     "enzyme-adapter-react-16": "^1.15.6",
-    "eslint": "^7.18.0",
+    "eslint": "^9.13.0",
     "father": "^4.0.0-rc.8",
     "np": "^10.0.7",
     "prettier": "^2.1.2",
