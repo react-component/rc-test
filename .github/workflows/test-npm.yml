@@ -1,0 +1,19 @@
+name: react component workflow
+
+on: [workflow_call]
+
+jobs:
+  react-component-workflow:
+    name: react component workflow
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: oven-sh/setup-bun@v2
+      - run: npm i --legacy-peer-deps
+      - run: npm run lint
+      - run: npx tsc --noEmit
+      - run: npm run compile
+      - run: npm run test -- --coverage
+      - uses: codecov/codecov-action@v5
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
