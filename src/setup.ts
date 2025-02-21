@@ -20,3 +20,11 @@ global.requestAnimationFrame =
   function requestAnimationFrame(callback) {
     setTimeout(callback, 0);
   };
+
+global.ResizeObserver = jest.fn(() => {
+  return {
+    observe() {},
+    unobserve() {},
+    disconnect() {},
+  };
+});
