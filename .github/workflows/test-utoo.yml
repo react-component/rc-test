@@ -1,0 +1,23 @@
+name: react component workflow
+
+on: [workflow_call]
+
+jobs:
+  react-component-workflow:
+    name: react component workflow
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: utooland/setup-utoo@v1
+        with:
+          utoo-version: 'latest'
+          registry: 'https://registry.npmmirror.com/'
+          cache-store: true
+      - run: ut
+      - run: ut lint
+      - run: utx tsc --noEmit
+      - run: ut compile
+      - run: ut test -- --coverage
+      - uses: codecov/codecov-action@v5
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
