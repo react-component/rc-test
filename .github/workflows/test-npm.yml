@@ -7,7 +7,7 @@ jobs:
     name: react component workflow
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
       - run: npm i --legacy-peer-deps
       - run: npm run lint
       - run: npx tsc --noEmit
