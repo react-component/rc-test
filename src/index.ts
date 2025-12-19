@@ -64,10 +64,30 @@ export default function (originOpts: any = {}) {
 
   let config = getConfig();
 
-  // Merge `jest.config.js`
-  const userJestConfigFile = path.resolve(cwd, 'jest.config.js');
-  if (fs.existsSync(userJestConfigFile)) {
-    const { setupFiles = [], setupFilesAfterEnv = [], ...restConfig } = require(userJestConfigFile);
+  // Merge Jest config file (support .js, .ts, .json)
+  let userJestConfigFile = null;
+  const possibleConfigFiles = [
+    'jest.config.js',
+    'jest.config.ts',
+    'jest.config.json',
+    '.jest.config.js',
+    '.jest.config.ts',
+    '.jest.config.json',
+  ];
+
+  for (let i = 0; i < possibleConfigFiles.length; i++) {
+    const configPath = path.resolve(cwd, possibleConfigFiles[i]);
+    if (fs.existsSync(configPath)) {
+      userJestConfigFile = configPath;
+      break;
+    }
+  }
+
+  if (userJestConfigFile) {
+    let userConfig = require(userJestConfigFile);
+    userConfig = userConfig.default || userConfig;
+
+    const { setupFiles = [], setupFilesAfterEnv = [], ...restConfig } = userConfig;
     config = {
       ...config,
       ...restConfig,
