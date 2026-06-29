@@ -23,6 +23,6 @@ jobs:
       - run: utx tsc --noEmit
       - run: ut compile
       - run: ut test -- --coverage
-      - uses: codecov/codecov-action@v5
+      - uses: codecov/codecov-action@v7
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
