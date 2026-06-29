@@ -1,16 +1,22 @@
 name: react component workflow
 
-on: [workflow_call]
+on:
+  workflow_call:
+    secrets:
+      CODECOV_TOKEN:
+        required: false
 
 jobs:
   react-component-workflow:
     name: react component workflow
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7
+        with:
+          persist-credentials: false
       - uses: utooland/setup-utoo@v1
         with:
-          utoo-version: 'latest'
+          utoo-version: "latest"
           cache-store: true
       - run: ut
       - run: ut lint
