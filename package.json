@@ -54,6 +54,7 @@
     "yargs-parser": "^21.1.1"
   },
   "devDependencies": {
+    "@rc-component/np": "^1.0.4",
     "@types/fs-extra": "^9.0.13",
     "@types/jest": "^29.2.0",
     "@types/node": "^22.7.5",
@@ -65,8 +66,7 @@
     "prettier": "^2.1.2",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
-    "typescript": "^5.0.0",
-    "@rc-component/np": "^1.0.4"
+    "typescript": "^5.0.0"
   },
   "peerDependencies": {
     "react": ">=16.9.0",
