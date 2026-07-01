@@ -1,7 +1,7 @@
 {
   "name": "rc-test",
   "version": "7.1.2",
-  "description": "test tools for react component",
+  "description": "🧪 Shared Jest workflow and test runner for rc-component packages.",
   "keywords": [
     "react",
     "test"
@@ -31,7 +31,7 @@
   ],
   "scripts": {
     "compile": "father build",
-    "prepublishOnly": "npm run compile && np --no-cleanup --yolo --no-publish",
+    "prepublishOnly": "npm run compile && rc-np",
     "test": "npm run compile && npm run test:only",
     "test:only": "node ./bin/rc-test.js"
   },
@@ -62,11 +62,11 @@
     "enzyme-adapter-react-16": "^1.15.6",
     "eslint": "^7.18.0",
     "father": "^4.0.0-rc.8",
-    "np": "^10.0.7",
     "prettier": "^2.1.2",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
-    "typescript": "^5.0.0"
+    "typescript": "^5.0.0",
+    "@rc-component/np": "^1.0.4"
   },
   "peerDependencies": {
     "react": ">=16.9.0",
