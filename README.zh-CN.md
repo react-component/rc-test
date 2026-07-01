@@ -44,7 +44,7 @@ npx rc-test --coverage
 ## 本地开发
 
 ```bash
-ut install
+npm install
 npm run compile
 npm run test:only
 ```
