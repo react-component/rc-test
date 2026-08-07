@@ -19,6 +19,6 @@ jobs:
       - run: npx tsc --noEmit
       - run: npm run compile
       - run: npm run test -- --coverage
-      - uses: codecov/codecov-action@v5
+      - uses: codecov/codecov-action@v7
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
